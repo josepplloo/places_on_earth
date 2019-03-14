@@ -1,3 +1,5 @@
+import { addPlace, getPlaces }  from './dataService.js';
+
 let map;
 let myPlaces = [];
 let cont = 0;
@@ -12,28 +14,18 @@ function init() {
     source: 'vector',
     basePath: '/sdk'
   }).setView([52.373154, 4.890659], 5);
+  
+  map.addEventListener('click', addMarker);
 
-  map.addEventListener('click', addPlace);
-
-  const placesFromLocalStorage = JSON.parse(localStorage.getItem('myPlaces'));
-
-  if(Array.isArray(placesFromLocalStorage)) {
-    myPlaces = placesFromLocalStorage;
-    renderMarkers();
-  }
 }
 
-function addPlace(event) {
-  
-  myPlaces.push( event.latlng );
-  
-  localStorage.setItem('myPlaces', JSON.stringify(myPlaces));
-
+function addMarker(event) {
+  addPlace(event.latlng)
   renderMarkers();
 }
 
 function renderMarkers() {
-  myPlaces.forEach(event => {
+  getPlaces().forEach(event => {
     let title = `Ma Place ${++cont}`;
     let marker = tomtom.L.marker(new tomtom.L.LatLng(event.lat,event.lng), {
       title: `${title}`
