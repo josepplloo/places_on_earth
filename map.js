@@ -1,5 +1,5 @@
 import { addPlace, getPlaces }  from './dataService.js';
-
+import { renderCities } from './sidebar.js'
 let map;
 let myPlaces = [];
 let cont = 0;
@@ -15,6 +15,8 @@ function init() {
     basePath: '/sdk'
   }).setView([52.373154, 4.890659], 5);
   
+
+  
   map.addEventListener('click', addMarker);
 
 }
@@ -25,14 +27,13 @@ function addMarker(event) {
 }
 
 function renderMarkers() {
-  getPlaces().forEach(event => {
+  getPlaces().forEach(({position}) => {
     let title = `Ma Place ${++cont}`;
-    let marker = tomtom.L.marker(new tomtom.L.LatLng(event.lat,event.lng), {
+    let marker = tomtom.L.marker(new tomtom.L.LatLng(position.lat, position.lng), {
       title: `${title}`
     });
     marker.bindPopup(title).addTo(map);
   })
-  console.log(localStorage.getItem('myPlaces'));
 }
 
 init();
