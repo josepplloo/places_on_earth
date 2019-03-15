@@ -6,12 +6,11 @@
 
 .map {
   height: 400px;
-  width: 500px; 
+  width: 900px; 
 }
 
 
 .main-content-area {
   display: flex;
-  height: 400px;
-  width: 500px; 
+  
 }

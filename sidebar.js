@@ -1,4 +1,4 @@
-import { getPlaces } from './dataService.js';
+import { getPlaces, subscribe } from './dataService.js';
 
 
 export function renderCities() {
@@ -12,7 +12,7 @@ export function renderCities() {
   
   cityListElement.innerHTML = cityElement;
 }
-setInterval(() =>{
-  renderCities();
-}, 1000);
 
+renderCities();
+
+subscribe(renderCities);

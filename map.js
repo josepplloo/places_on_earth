@@ -1,8 +1,10 @@
-import { addPlace, getPlaces }  from './dataService.js';
+import { addPlace, getPlaces, subscribe }  from './dataService.js';
 import { renderCities } from './sidebar.js'
 let map;
-let myPlaces = [];
-let cont = 0;
+
+init();
+renderMarkers();
+subscribe(renderMarkers);
 
 function init() {
 
@@ -14,19 +16,18 @@ function init() {
     source: 'vector',
     basePath: '/sdk'
   }).setView([52.373154, 4.890659], 5);
-  
-
-  
+    
   map.addEventListener('click', addMarker);
-
 }
 
 function addMarker(event) {
-  addPlace(event.latlng)
   renderMarkers();
+  addPlace(event.latlng)
 }
 
 function renderMarkers() {
+  let cont = 0;
+
   getPlaces().forEach(({position}) => {
     let title = `Ma Place ${++cont}`;
     let marker = tomtom.L.marker(new tomtom.L.LatLng(position.lat, position.lng), {
@@ -36,4 +37,3 @@ function renderMarkers() {
   })
 }
 
-init();
