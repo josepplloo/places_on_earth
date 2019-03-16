@@ -1,5 +1,4 @@
 let myPlaces = [];
-const geoencoder = 'asignar la api';
 
 let changeListener = [];
 
@@ -33,12 +32,20 @@ export function addPlace(latlnt) {
 export function getPlaces() {
   return myPlaces;
 }
+subscribe(getPlaces);
+
+export function setPlaces(myPlaces) {
+  
+  localStorage.setItem('myPlaces', JSON.stringify(myPlaces));
+  publish(myPlaces);
+}
+
 
 function initLocalStorage() {
   const placesFromLocalStorage = JSON.parse(localStorage.getItem('myPlaces'));
   if(Array.isArray(placesFromLocalStorage)) {
     myPlaces = placesFromLocalStorage;
-    //publish();
+    publish(myPlaces);
   }
 }
 

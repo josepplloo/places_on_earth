@@ -4,13 +4,48 @@
   padding: 0;
 }
 
+h1 {
+  font-family: Roboto,sans-serif;
+}
+
 .map {
   height: 400px;
   width: 900px; 
+  margin-left: 30px;
 }
 
 
 .main-content-area {
   display: flex;
+  padding: 20px;
+  background: #fafafa;
+  position: relative;
+}
+
+.citiesList {
+  border-right: solid black;
+  font-family: Roboto,sans-serif;
+  list-style-type: none;
+  padding-right: 10px
+}
+
+.city-element {
+  cursor: default;
+  color: rgba(0,0,0,.87);
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: .04em;
+  line-height: 1;
+  margin-bottom: 10px;
+  border-bottom: solid transparent;
   
+}
+
+.city-element::before {
+  content: "\200B";
+}
+
+.city-element:hover {
+  border-bottom: solid green;
 }
