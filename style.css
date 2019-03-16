@@ -42,6 +42,14 @@ h1 {
   
 }
 
+.city-element button {
+  cursor: pointer;
+}
+
+.city-element button:hover {
+  color: red;
+}
+
 .city-element::before {
   content: "\200B";
 }
@@ -49,3 +57,4 @@ h1 {
 .city-element:hover {
   border-bottom: solid green;
 }
+
