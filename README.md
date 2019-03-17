@@ -11,3 +11,19 @@ You will find this project interesting if you are looking for a **JS** *Vanilla*
 
 
 ## Project Set Up
+
+Create an account in [TomTom](https://developer.tomtom.com/user/me/apps), later create an `env.js` file in your project like the follow example:  
+
+
+```javascript
+//env.js
+
+const env = {
+  productName: '',
+  version: '',
+  APIKEY: ''
+}
+```
+Fill the fields with the necessary info.
+
+⚠️ Ensure your **KEY** it's for its for **Maps API & Search API products**
