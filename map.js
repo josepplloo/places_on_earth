@@ -22,11 +22,18 @@ function init() {
   map.addEventListener('click', addMarker);
 }
 
+/**
+ *It's will render the marker when a user click the map
+ * @param {Event} event 
+ */
 function addMarker(event) {
   renderMarkers();
   addPlace(event.latlng);
 }
 
+/**
+ * This function deletes and creates markers in an inefficient way...
+ */
 export function renderMarkers() {
   
   layer.forEach(marker => {marker.remove()});

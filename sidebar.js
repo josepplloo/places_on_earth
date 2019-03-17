@@ -1,11 +1,18 @@
 import { getPlaces, subscribe, setPlaces } from './dataService.js';
 
+/**
+ * Delete cities in CytiesArray
+ * @param {Number} index 
+ */
 export function clearCity(index) {
   let myPlaces = getPlaces();
   myPlaces.splice(index, 1);
   setPlaces(myPlaces);
 }
 
+/**
+ * Create the elements in the sidebar
+ */
 export function renderCities() {
   const cityListElement = document.querySelector('.citiesList');
 
